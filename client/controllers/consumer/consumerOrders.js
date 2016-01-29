@@ -21,34 +21,40 @@ if(Meteor.isClient){
         'submit form': function(event,template){
             event.preventDefault();
 
-            var amount = template.find('#amountTendered').value;
 
+            try{
+                var amount = parseFloat(template.find('#amountTendered').value);
                 Orders.insert({
                     customerId:sessionStorage.getItem('validId'),
+                    supplierId:sessionStorage.getItem('validSupplierId'),
                     totalAmount:amount,
                     status:"Waiting",
                     dateSent: new Date()
                 })
 
-            var currentOrderId = Orders.findOne({customerId:sessionStorage.getItem('validId')},{sort:{dateSent:-1}})._id;
+                var currentOrderId = Orders.findOne({customerId:sessionStorage.getItem('validId')},{sort:{dateSent:-1}})._id;
 
 
-            var orders = UserCarts.find({ownerId:sessionStorage.getItem('validId')});
-            var count = orders.count();
-            orders = orders.fetch();
-            for(var a=0; a<count;a++){
-                OrderItems.insert({
-                    orderId: currentOrderId,
-                    itemName:orders[a].itemName,
-                    itemUnit:orders[a].itemUnit,
-                    itemPrice:orders[a].itemPrice,
-                    itemQuantity:orders[a].itemQuantity
-                })
+                var orders = UserCarts.find({ownerId:sessionStorage.getItem('validId')});
+                var count = orders.count();
+                orders = orders.fetch();
+                for(var a=0; a<count;a++){
+                    OrderItems.insert({
+                        orderId: currentOrderId,
+                        itemName:orders[a].itemName,
+                        itemUnit:orders[a].itemUnit,
+                        itemPrice:orders[a].itemPrice,
+                        itemQuantity:orders[a].itemQuantity
+                    })
 
-                UserCarts.remove({_id:orders[a]._id})
+                    UserCarts.remove({_id:orders[a]._id})
+                }
+
+                alertify.success('Order Sent');
+
+            }catch(error){
+                alertify.error('"Change for how much field is required"');
             }
-
-            alertify.success('Order Sent');
 
         }
     })
