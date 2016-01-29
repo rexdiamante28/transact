@@ -42,12 +42,13 @@ if(Meteor.isClient){
 
     //helpers
     Template.ownerProducts.helpers({
-        Products: function(){
+        Products: function(event){
             JoinedProducts = new Mongo.Collection(null);
 
-            var count =  Products.find({}).count();
-            var unjoinedProducts = Products.find({});
+            var count =  Products.find({ownerId:sessionStorage.getItem('validId')}).count();
+            var unjoinedProducts = Products.find({ownerId:sessionStorage.getItem('validId')});
             unjoinedProducts = unjoinedProducts.fetch();
+
 
             for(var a=0; a<count; a++){
                 JoinedProducts.insert({

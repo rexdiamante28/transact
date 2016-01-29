@@ -22,7 +22,17 @@ Router.route('/consumer/productlist', function () {
     this.layout('consumerLayout');
 });
 
+Router.route('/consumer/orders', function () {
+    this.render('consumerOrders');
+    this.layout('consumerLayout');
+});
+
 Router.route('/consumer/productlist/productskus', function () {
     this.render('consumerProductSkus');
+    this.layout('consumerLayout');
+});
+
+Router.route('/consumer/productlist/productskus/order', function () {
+    this.render('consumerProductsOrder');
     this.layout('consumerLayout');
 });

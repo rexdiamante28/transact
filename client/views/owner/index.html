@@ -23,9 +23,16 @@
                                         <li><a href="/owner/productskus">Product SKUs</a></li>
                                     </ul>
                                 </li>-->
-                                <li><a href="/owner/products"><i class="fa fa-users"></i><br/>Products</a></li>
+                                <li><a href="/owner/products"><i class="fa fa-product-hunt"></i><br/>Products</a></li>
                                 <li><a href="/owner/clients"><i class="fa fa-users"></i><br/>Clients</a></li>
-                                <li><a href="/owner/transactions"><i class="fa fa-file"></i><br/>Transactions</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-file"></i><br/>Transactions <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="/owner/orders/pending">Pending</a></li>
+                                        <li><a href="/owner/orders/fordeliver">For Delivery</a></li>
+                                        <li><a href="/owner/orders/completed">Completed</a></li>
+                                    </ul>
+                                </li>
                                 <li><a href="/owner/reports"><i class="fa fa-clipboard"></i><br/>Reports</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">

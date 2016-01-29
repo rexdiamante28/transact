@@ -4,3 +4,6 @@
 .big-menu li, .big-menu a{
     text-align: center;
 }
+.dropdown-menu li, .dropdown-menu li a {
+    text-align: left !important;
+}

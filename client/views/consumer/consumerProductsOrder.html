@@ -1,0 +1,29 @@
+<template name="consumerProductsOrder">
+    <div class="col-xs-12 padd-20">
+       <form>
+           <div class="form-group">
+               <label>Item name</label>
+               <input type="text" readonly class="form-control" id="name" value="{{Item.name}}">
+           </div>
+           <div class="form-group">
+               <label>Item Description</label>
+               <input type="text" readonly class="form-control" id="description" value="{{Item.description}}">
+           </div>
+           <div class="form-group">
+               <label>Unit</label>
+               <input type="text" readonly class="form-control" id="unit" value="{{Sku.unit}}">
+           </div>
+           <div class="form-group">
+               <label>Unit Price</label>
+               <input type="text" readonly class="form-control" id="price" value="{{Sku.price}}">
+           </div>
+           <div class="form-group">
+               <label>Quantity</label>
+               <input type="number"  class="form-control" id="quantity" >
+           </div>
+           <div class="form-group">
+               <button class="btn btn-info btn-block order" type="submit"><i class="fa fa-shopping-cart _23"></i> Add to order</button>
+           </div>
+       </form>
+    </div>
+</template>

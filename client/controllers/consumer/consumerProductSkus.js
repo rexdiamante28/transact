@@ -7,8 +7,8 @@ if(Meteor.isClient){
     //events
     Template.consumerProductSkus.events({
         'click .order': function(event,template){
-            sessionStorage.setItem('currentBrowsedProduct',event.currentTarget.id);
-            Router.go('/consumer/productlist/productskus/');
+            sessionStorage.setItem('currentBrowsedSku',event.currentTarget.id);
+            Router.go('/consumer/productlist/productskus/order');
         }
     })
 
@@ -16,9 +16,6 @@ if(Meteor.isClient){
     Template.consumerProductSkus.helpers({
         Sku: function(){
             return ProductSkus.find({productId:sessionStorage.getItem('currentBrowsedProduct')});
-        },
-        Item: function(){
-            return Products.findOne({_id:sessionStorage.getItem('currentBrowsedProduct')});
         }
     })
 }

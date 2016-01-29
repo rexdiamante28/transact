@@ -1,0 +1,49 @@
+<template name="consumerOrders">
+    <div class="col-xs-12 padd-20">
+        <ul class="list-group">
+            {{#each Orders}}
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h4 class="">{{itemName}} ({{itemUnit}})</h4>
+                            <label class="normal">Price: P {{itemPrice}}</label>
+                            <label class="normal">Quantity: {{itemQuantity}}</label><br/>
+                            <button class="btn btn-info btn-sm edit pull-right" id="{{_id}}"><i class="fa fa-pencil"></i></button>
+                            <button class="btn btn-danger btn-sm  remove pull-right" id="{{_id}}"><i class="fa fa-remove"></i></button>
+                        </div>
+                    </div>
+                </li>
+            {{/each}}
+            {{#if equals Subtotal 0}}
+                <li class="list-group-item top-20">
+                    <div class="row">
+                        <div class="col-xs-12 padd-20 text-center">
+                            <label class="normal text-muted">No pending orders</label>
+                        </div>
+                    </div>
+                </li>
+            {{else}}
+                <li class="list-group-item bggray5">
+                    <div class="row ">
+                        <div class="col-xs-12">
+                            <h4 class="bold">Order Summary</h4>
+                            <label class="_23">Sub total: <b class="fgreen5">P </b><b id="subTotal" class="fgreen5">{{Subtotal}}</b></label>
+                            <form>
+                                <div class="form-group">
+                                    <label> Change for how much?</label>
+                                    <input type="number" class="form-control" id="amountTendered" placeholder="Amount">
+                                </div>
+                                <div class="form-group">
+                                    <label><input type="checkbox" id="exactAmount"> Exact amount</label>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-info btn-block">Send Order</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            {{/if}}
+        </ul>
+    </div>
+</template>
