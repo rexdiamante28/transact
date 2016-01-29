@@ -1,0 +1,29 @@
+<template name="consumerTransactionsStatus">
+    <div class="col-xs-12 padd-20">
+        {{#if Transactions}}
+            <ul class="list-group">
+                {{#each Transactions}}
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h4 class="fgreen5">{{formatDate dateSent}}</h4>
+                                <label class=" bold text-muted _17">P {{totalAmount}}</label>
+                                <button id="{{_id}}"  class="btn btn-info pull-right btn-sm view">See details</button>
+                            </div>
+                        </div>
+                    </li>
+                {{/each}}
+            </ul>
+        {{else}}
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h4 class="text-muted text-center">No preview avaible</h4>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        {{/if}}
+    </div>
+</template>

@@ -21,40 +21,45 @@ if(Meteor.isClient){
         'submit form': function(event,template){
             event.preventDefault();
 
-
-            try{
-                var amount = parseFloat(template.find('#amountTendered').value);
-                Orders.insert({
-                    customerId:sessionStorage.getItem('validId'),
-                    supplierId:sessionStorage.getItem('validSupplierId'),
-                    totalAmount:amount,
-                    status:"Waiting",
-                    dateSent: new Date()
-                })
-
-                var currentOrderId = Orders.findOne({customerId:sessionStorage.getItem('validId')},{sort:{dateSent:-1}})._id;
-
-
-                var orders = UserCarts.find({ownerId:sessionStorage.getItem('validId')});
-                var count = orders.count();
-                orders = orders.fetch();
-                for(var a=0; a<count;a++){
-                    OrderItems.insert({
-                        orderId: currentOrderId,
-                        itemName:orders[a].itemName,
-                        itemUnit:orders[a].itemUnit,
-                        itemPrice:orders[a].itemPrice,
-                        itemQuantity:orders[a].itemQuantity
+            alertify.confirm("Confirm action","Please confirm to delete.",
+                function(){
+                    var amount = parseFloat(template.find('#amountTendered').value);
+                    Orders.insert({
+                        customerId:sessionStorage.getItem('validId'),
+                        supplierId:sessionStorage.getItem('validSupplierId'),
+                        totalAmount:amount,
+                        status:"Waiting",
+                        dateSent: new Date()
+                    },function(error,result){
+                        var success ="Order sent.";
+                        Validate(error,Orders,template,success);
                     })
 
-                    UserCarts.remove({_id:orders[a]._id})
-                }
+                    if(!isNaN((amount))){
+                        var currentOrderId = Orders.findOne({customerId:sessionStorage.getItem('validId')},{sort:{dateSent:-1}})._id;
 
-                alertify.success('Order Sent');
 
-            }catch(error){
-                alertify.error('"Change for how much field is required"');
-            }
+                        var orders = UserCarts.find({ownerId:sessionStorage.getItem('validId')});
+                        var count = orders.count();
+                        orders = orders.fetch();
+                        for(var a=0; a<count;a++){
+                            OrderItems.insert({
+                                orderId: currentOrderId,
+                                itemName:orders[a].itemName,
+                                itemUnit:orders[a].itemUnit,
+                                itemPrice:orders[a].itemPrice,
+                                itemQuantity:orders[a].itemQuantity
+                            })
+
+                            UserCarts.remove({_id:orders[a]._id})
+                        }
+                    }
+
+                },
+                function(){
+                    //alertify.error('Cancel');
+                });
+
 
         }
     })

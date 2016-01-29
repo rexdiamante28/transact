@@ -36,3 +36,18 @@ Router.route('/consumer/productlist/productskus/order', function () {
     this.render('consumerProductsOrder');
     this.layout('consumerLayout');
 });
+
+Router.route('/consumer/transactions/status', function () {
+    this.render('consumerTransactionsStatus');
+    this.layout('consumerLayout');
+});
+
+Router.route('/consumer/transactions/status/view', function () {
+    this.render('consumerTransactionsStatusView');
+    this.layout('consumerLayout');
+});
+
+
+
+
+
