@@ -1,0 +1,89 @@
+<template name="ownerProductsSkus">
+    {{>productSkuModal}}
+    <div class="col-xs-12">
+        <div class="row">
+            <div class="col-xs-12">
+                <button class="btn btn-default pull-right" data-toggle="modal" data-target="#productSkuModal">Add Unit</button>
+            </div>
+        </div>
+        <div class="col-sm-4 bggray5">
+            <h5>Product ID: <b class="fblue5">{{Product._id}}</b></h5>
+            <h5>Product Name: <b>{{Product.name}}</b></h5>
+            <h5>Product Description: {{Product.description}}</h5>
+        </div>
+        <div class="col-sm-8">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover ">
+                    <thead>
+                    <tr>
+                        <th>Unit</th>
+                        <th>Unit Price</th>
+                        <th>Available</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each Skus}}
+                        <tr>
+                            <td>{{unit}}</td>
+                            <td>{{price}}</td>
+                            <td>
+                                {{#if equals isAvailable true}}
+                                    <i class="fa fa-check fgreen5 _17"></i>
+                                {{else}}
+                                    <i class="fa fa-remove fred1 _17"></i>
+                                {{/if}}
+                            </td>
+                            <td>
+                                <button class="btn btn-default btn-xs view" id="{{_id}}"><i class="fa fa-pencil"></i></button>
+                                <button class="remove btn btn-xs btn-default" id="{{_id}}"><i class="fa fa-remove"></i></button>
+                            </td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</template>
+
+
+<template name="productSkuModal">
+    <div class="modal fade" id="productSkuModal">
+        <div class="modal-dialog">
+            <form class="form-horizontal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                        <h4 class="modal-title">Enter SKU Details</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="inputEmail" class="control-label col-xs-2">Unit</label>
+                            <div class="col-xs-10">
+                                <input type="text" class="form-control" id="unit" placeholder="Unit">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword" class="control-label col-xs-2">Price</label>
+                            <div class="col-xs-10">
+                                <input type="text" class="form-control" id="price" placeholder="Price">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-offset-2 col-xs-10">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" id="isAvailable">Available</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,10 @@
+.loginlist{
+    display: inline-block;
+    text-decoration: none;
+    list-style-type: none;
+}
+.loginlist li{
+    display: inline-block;
+    font-size: 30px;
+    margin-right: 10px;
+}

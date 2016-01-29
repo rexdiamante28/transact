@@ -1,0 +1,17 @@
+<template name="consumerProductList">
+    <div class="col-xs-12">
+        <ul class="list-group">
+            {{#each Products}}
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h4 class="">{{name}}</h4>
+                            <label class="normal">{{description}}</label>
+                            <button class="btn btn-info btn-sm pull-right order" id="{{_id}}">Order</button>
+                        </div>
+                    </div>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</template>

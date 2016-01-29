@@ -1,0 +1,30 @@
+<template name="consumerProductSkus">
+    <div class="col-xs-12">
+        <div class="col-xs-12 top-30">
+            <form>
+                <div class="form-group">
+                    <label>Item Name</label>
+                    <input type="text" class="form-control" id="name" readonly value="{{Item.name}}">
+                </div>
+                <div class="form-group">
+                    <label>Item Description</label>
+                    <textarea class="form-control" id="description" readonly >{{Item.description}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Unit</label><br/>
+                    {{#each Sku}}
+                        <div class="col-xs-12">
+                            <label><input type="checkbox"> {{unit}} <b class="fgreen5">(P {{price}} each)</b></label>
+                            <input class="pull-right "  type="number" style="max-width: 50px;">
+                        </div>
+                    {{/each}}
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12 no-padd top-20">
+                        <button class="btn btn-info">Add to order</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</template>
