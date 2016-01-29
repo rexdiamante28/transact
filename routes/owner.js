@@ -39,3 +39,19 @@ Router.route('/owner/settings', function () {
     this.render('ownerSettings');
     this.layout('ownerLayout');
 });
+Router.route('/owner/orders/pending', function () {
+    this.render('pendingOrders');
+    this.layout('ownerLayout');
+});
+Router.route('/owner/orders/fordeliver', function () {
+    this.render('deliveryOrders');
+    this.layout('ownerLayout');
+});
+Router.route('/owner/orders/completed', function () {
+    this.render('completedOrders');
+    this.layout('ownerLayout');
+});
+Router.route('/owner/orders/details/', function () {
+    this.render('orderDetails');
+    this.layout('ownerLayout');
+});

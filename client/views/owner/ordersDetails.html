@@ -1,0 +1,39 @@
+<template name="orderDetails">
+    <div class="col-xs-12">
+        <div class="table-responsive">
+            <label>Name: {{orderDetails.name}}</label><br>
+            <label> Mobile: {{#if orderDetails.mobile}}{{orderDetails.mobile}}{{else}}None{{/if}}</label><br>
+            <label> Landline: {{#if orderDetails.landline}}{{orderDetails.landline}}{{else}}None{{/if}}</label><br>
+            <label> Address: {{#if orderDetails.address}}{{orderDetails.address}}{{else}}None{{/if}}</label><br>
+            <table class="table table-striped table-hover ">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Unit</th>
+                    <th>Total Amount</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each orderDetails.orderItems}}
+                    <tr>
+                        <td>{{itemName}}</td>
+                        <td>{{itemPrice}}</td>
+                        <td>{{itemQuantity}}</td>
+                        <td>{{itemUnit}}</td>
+                        <td>{{totalAmount}}</td>
+                    </tr>
+                {{/each}}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>P {{orderDetails.totalAmount}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>
