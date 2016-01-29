@@ -21,6 +21,13 @@ if(Meteor.isClient){
         'submit form': function(event,template){
             event.preventDefault();
 
+            var client = Clients.findOne({clientId:sessionStorage.getItem('validId'),supplierId:sessionStorage.getItem('validSupplierId')})
+            if(client ==  undefined){
+                Clients.insert({
+                    clientId: sessionStorage.getItem('validId'),
+                    supplierId: sessionStorage.getItem('validSupplierId')
+                })
+            }
 
             try{
                 var amount = parseFloat(template.find('#amountTendered').value);

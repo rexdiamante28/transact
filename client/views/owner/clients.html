@@ -1,0 +1,26 @@
+<template name="ownerClients">
+<div class="col-xs-12">
+    <div class="table-responsive">
+        <table class="table table-striped table-hover ">
+            <thead>
+            <tr>
+                <th>Client Name</th>
+                <th>Mobile</th>
+                <th>LandLine</th>
+                <th>Address</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each clients}}
+                <tr>
+                    <td>{{name}}</td>
+                    <td>{{mobile}}</td>
+                    <td>{{landline}}</td>
+                    <td>{{address}}</td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+</template>
