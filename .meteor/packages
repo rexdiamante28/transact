@@ -23,3 +23,13 @@ aldeed:collection2
 msavin:mongol
 fortawesome:fontawesome
 momentjs:moment
+cfs:filesystem
+cfs:standard-packages
+cfs:ui
+riaan53:blueimp-canvas-to-blob
+ostrio:meteor-root
+aslagle:reactive-table
+bootswatch:cerulean
+reactive-var
+mpowaga:autoform-summernote
+aldeed:autoform
